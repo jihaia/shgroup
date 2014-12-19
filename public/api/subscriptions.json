@@ -1,0 +1,52 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "subscriptions",
+  "apis": [
+    {
+      "path": "api/subscriptions",
+      "operations": [
+        {
+          "summary": "Creates a new subscription to one or more interests for a guest or anonymous contact.",
+          "notes": "Identifiers may be either; confirmation number, email address or guest ID",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "brand",
+              "type": "integer",
+              "description": "The Brand Identifier",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page number",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "post",
+          "nickname": "Api::Subscriptions#create"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "guests",
+  "apis": [
+    {
+      "path": "api/guests/authenticate",
+      "operations": [
+        {
+          "summary": "Authenticates the credentials of an individual guest",
+          "notes": "The authentication action allows a client to validate the credentials of a guest. The guest may be idetified by either an email address or guest number, accompanied by a password.",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "application",
+              "type": "string",
+              "description": "Unique application identifier for source system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "identifier",
+              "type": "string",
+              "description": "The guest number or email address of the guest",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "password",
+              "type": "string",
+              "description": "The password of the guest",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::Guests#authenticate"
+        }
+      ]
+    },
+    {
+      "path": "api/guests/by/{alternate_id}",
+      "operations": [
+        {
+          "summary": "Fetches a guest number by via an alternate key",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "application",
+              "type": "string",
+              "description": "Unique application identifier for source system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "alternate_id",
+              "type": "string",
+              "description": "The identifier used to locate a guest. May be email address or a reservation confirmation number",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::Guests#by"
+        }
+      ]
+    }
+  ]
+}

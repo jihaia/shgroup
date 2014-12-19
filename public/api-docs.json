@@ -1,0 +1,19 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "apis": [
+    {
+      "path": "api/guests.{format}",
+      "description": "Guest Management"
+    },
+    {
+      "path": "api/subscriptions.{format}",
+      "description": "Subscription Management"
+    }
+  ],
+  "info": {
+    "title": "SHGroup CRM RESTful APIs",
+    "description": "The supported APIs provide RESTful access to the key Guest360 services ranging from accounts, stays, preferences etc."
+  }
+}
