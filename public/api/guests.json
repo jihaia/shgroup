@@ -10,6 +10,7 @@
         {
           "summary": "Authenticates the credentials of an individual guest",
           "notes": "The authentication action allows a client to validate the credentials of a guest. The guest may be idetified by either an email address or guest number, accompanied by a password.",
+          "type": "Result",
           "parameters": [
             {
               "paramType": "header",
@@ -49,9 +50,9 @@
           ],
           "responseMessages": [
             {
-              "code": 401,
+              "code": 403,
               "responseModel": null,
-              "message": "Unauthorized"
+              "message": "Forbidden"
             },
             {
               "code": 404,
@@ -127,5 +128,38 @@
         }
       ]
     }
-  ]
+  ],
+  "models": {
+    "Result": {
+      "id": "Result",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "A simple boolean result indicating the success or failure of the request"
+        }
+      },
+      "description": "A simple boolean result object indicating the success or failure of the request."
+    },
+    "Credentials": {
+      "id": "Credentials",
+      "required": [
+        "identifier",
+        "password"
+      ],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "password": {
+          "type": "string",
+          "description": "Guests password in plain text"
+        }
+      },
+      "description": "A credentials object."
+    }
+  }
 }

@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.1.5)
       actionpack (= 4.1.5)
@@ -21,14 +21,20 @@ GEM
       activemodel (= 4.1.5)
       activesupport (= 4.1.5)
       arel (~> 5.0.0)
+    activerecord-sqlserver-adapter (4.1.0)
+      activerecord (~> 4.1.0)
+      arel
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    amq-protocol (1.9.2)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    bunny (1.6.3)
+      amq-protocol (>= 1.9.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -36,6 +42,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colored (1.2)
     erubis (2.7.0)
     execjs (2.2.2)
     hike (1.2.3)
@@ -75,6 +82,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    ruby-odbc (0.99995)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -94,7 +102,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     swagger-docs (0.1.9)
       activesupport (>= 3, < 5)
       rails (>= 3, < 5)
@@ -108,22 +115,29 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2014.8)
+      tzinfo (>= 1.0.0)
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
+  activerecord-sqlserver-adapter
+  bunny
   coffee-rails (~> 4.0.0)
+  colored
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.5)
+  ruby-odbc
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
-  sqlite3
   swagger-docs
   turbolinks
+  tzinfo-data
   uglifier (>= 1.3.0)
