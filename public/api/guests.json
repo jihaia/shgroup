@@ -21,7 +21,7 @@
             },
             {
               "paramType": "header",
-              "name": "X-EndPoint",
+              "name": "X-Endpoint",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true

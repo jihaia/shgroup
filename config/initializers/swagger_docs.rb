@@ -13,7 +13,7 @@ Swagger::Docs::Config.register_apis({
                                             # add custom attributes to api-docs
                                             :attributes => {
                                                 :info => {
-                                                    "title" => "SHGroup CRM RESTful APIs",
+                                                    "title" => "CRM RESTful APIs",
                                                     "description" => "The supported APIs provide RESTful access to the key Guest360 services ranging from accounts, stays, preferences etc."
                                                 }
                                             }

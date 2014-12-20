@@ -15,20 +15,25 @@ class Api::PaymentCardsController < Api::SecureController
     response :not_found
   end
   def index
-    puts params
+    recs  = @guest.payment_cards
+    total = recs.count
+    render json: {records: recs, total: total}
   end
 
   swagger_api :show do |api|
     summary "Fetches an individual payment card for a guest"
     notes "Identifiers may be either; confirmation number, email address"
     Api::SecureController.secure_params(api)
-    param :path,    :alternate_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
+    param :path,    :guest_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
+    param :path,    :id,        :stirng,   :required,   "The unique payment card identifier."
     response :unauthorized
     response :not_acceptable
     response :not_found
   end
   def show
-    puts params
+    recs  = @guest.payment_cards.where(shg_payment_card_id: params[:id])
+    total = recs.count
+    render json: {records: recs.first, total: total}
   end
 
   swagger_api :create do |api|

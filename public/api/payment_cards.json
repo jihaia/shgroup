@@ -21,7 +21,7 @@
             },
             {
               "paramType": "header",
-              "name": "X-EndPoint",
+              "name": "X-Endpoint",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
@@ -84,7 +84,7 @@
             },
             {
               "paramType": "header",
-              "name": "X-EndPoint",
+              "name": "X-Endpoint",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
@@ -140,7 +140,7 @@
             },
             {
               "paramType": "header",
-              "name": "X-EndPoint",
+              "name": "X-Endpoint",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
@@ -150,6 +150,20 @@
               "name": "X-Token",
               "type": "string",
               "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The identifier used to locate a guest. May be email address or a reservation confirmation number",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "stirng",
+              "description": "The unique payment card identifier.",
               "required": true
             }
           ],
@@ -196,7 +210,7 @@
             },
             {
               "paramType": "header",
-              "name": "X-EndPoint",
+              "name": "X-Endpoint",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
@@ -252,7 +266,7 @@
             },
             {
               "paramType": "header",
-              "name": "X-EndPoint",
+              "name": "X-Endpoint",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true

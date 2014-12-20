@@ -1,4 +1,4 @@
-class Shg::EmailAddress < ActiveRecord::Base
+class Crm::EmailAddress < ActiveRecord::Base
 
     self.table_name    = "email_address"
     self.primary_key   = "email_address_id"

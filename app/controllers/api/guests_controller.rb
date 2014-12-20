@@ -18,7 +18,7 @@ class Api::GuestsController < Api::SecureController
     status, valid = 404, false
 
     # find as email_address
-    email_address = Shg::EmailAddress.where(address: params[:identifier]).first
+    email_address = Crm::EmailAddress.where(address: params[:identifier]).first
     if email_address && email_address.individual && email_address.individual.account
       status = 401
       if (email_address.individual.account.password == params[:password])
@@ -26,7 +26,7 @@ class Api::GuestsController < Api::SecureController
       end
     else
       # fetch as guest number
-      account = Shg::Account.where(guest_number: params[:identifier]).first
+      account = Crm::Account.where(guest_number: params[:identifier]).first
       if account
         status = 401
         if account.password == params[:password]
