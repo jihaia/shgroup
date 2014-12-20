@@ -7,13 +7,12 @@ class Api::PaymentCardsController < Api::SecureController
   swagger_api :index do |api|
     summary "Fetches all payment cards for a guest"
     notes "Identifiers may be either; confirmation number, email address"
-    type :PaymentCard
+    type :result
     Api::SecureController.secure_params(api)
     param :path,    :guest_id,  :string,   :required,   "The unique guest number that identifies a guest."
-    response :unauthorized
-    response :not_acceptable
-    response :not_found
+    response :not_found,     "[Not Found]      The guest could not be found by supplied identifier"
   end
+
   def index
     recs  = @guest.payment_cards
     total = recs.count
@@ -23,12 +22,11 @@ class Api::PaymentCardsController < Api::SecureController
   swagger_api :show do |api|
     summary "Fetches an individual payment card for a guest"
     notes "Identifiers may be either; confirmation number, email address"
+    type :result
     Api::SecureController.secure_params(api)
-    param :path,    :guest_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
+    Api::SecureController.guest_params(api)
     param :path,    :id,        :stirng,   :required,   "The unique payment card identifier."
-    response :unauthorized
-    response :not_acceptable
-    response :not_found
+
   end
   def show
     recs  = @guest.payment_cards.where(shg_payment_card_id: params[:id])
@@ -41,9 +39,7 @@ class Api::PaymentCardsController < Api::SecureController
     notes "Identifiers may be either; confirmation number, email address"
     Api::SecureController.secure_params(api)
     param :path,    :alternate_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
-    response :unauthorized
-    response :not_acceptable
-    response :not_found
+    response :not_found,     "[Not Found]      The guest could not be found by supplied identifier"
   end
   def create
     puts params
@@ -78,6 +74,10 @@ class Api::PaymentCardsController < Api::SecureController
 
 
   # Swagger Models =================================================================================
+  swagger_model :result do |api|
+    Api::SecureController.read_result(api, "PaymentCard")
+  end
+
   swagger_model :PaymentCard do
     description "A PaymentCard Object."
     property :shg_payment_card_id,  :string,   :required, "A unique identifier thay may be either an email address or guest number"

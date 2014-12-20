@@ -18,3 +18,4 @@ gem 'swagger-docs'
 gem 'tzinfo-data'
 gem 'colored'
 gem 'bunny'
+gem "rack-cors"
