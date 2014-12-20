@@ -13,7 +13,7 @@
     },
     {
       "path": "api/payment_cards.{format}",
-      "description": "Guest Payment Cards"
+      "description": "Payment Cards"
     }
   ],
   "info": {

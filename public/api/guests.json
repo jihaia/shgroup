@@ -14,21 +14,21 @@
           "parameters": [
             {
               "paramType": "header",
-              "name": "brand",
+              "name": "X-Brand",
               "type": "string",
               "description": "The unique brand identifier",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "application",
+              "name": "X-EndPoint",
               "type": "string",
-              "description": "Unique application identifier for source system",
+              "description": "Unique endpoint or application identifier of a registered system",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "token",
+              "name": "X-Token",
               "type": "string",
               "description": "Secure token for source system",
               "required": true

@@ -7,17 +7,16 @@ class Api::GuestsController < Api::SecureController
     summary "Authenticates the credentials of an individual guest"
     notes "The authentication action allows a client to validate the credentials of a guest. The guest may be idetified by either an email address or guest number, accompanied by a password."
     type :Result
-    Api::SecureController.secure_params(api)         
+    Api::SecureController.secure_params(api)
     param :query,   :identifier,    :string,        :required,   "The guest number or email address of the guest"
     param :query,   :password,      :string,        :required,   "The password of the guest"
-    response :forbidden,     "[Forbidden]      Returned if the source credentials are incorrect"
     response :unauthorized,  "[Unauthorized]   Indicates the user was found but the password is incorrect"
     response :not_found,     "[Not Found]      The guest could not be found by supplied identifier"
   end
 
   def authenticate
     status, valid = 404, false
-    
+
     # find as email_address
     email_address = Shg::EmailAddress.where(address: params[:identifier]).first
     if email_address && email_address.individual && email_address.individual.account
@@ -57,7 +56,7 @@ class Api::GuestsController < Api::SecureController
   end
 
 
-  
+
   def payment_cards
 
 

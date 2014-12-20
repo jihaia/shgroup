@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     # GUEST ITEMS ============================================
     resources :guests do
-      resources :payment_details
+      resources :payment_cards
     end
 
   end
