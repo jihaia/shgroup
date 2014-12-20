@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
     # SUBSCRIPTION MANAGEMENT ================================
     post 'subscriptions'               => 'subscriptions#create'
+
+    # GUEST ITEMS ============================================
+    resources :guests do
+      resources :payment_details
+    end
+
   end
 
 end

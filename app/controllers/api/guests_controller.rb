@@ -10,16 +10,36 @@ class Api::GuestsController < Api::SecureController
     Api::SecureController.secure_params(api)         
     param :query,   :identifier,    :string,        :required,   "The guest number or email address of the guest"
     param :query,   :password,      :string,        :required,   "The password of the guest"
-    response :forbidden
-    response :not_acceptable
-    response :not_found
+    response :forbidden,     "[Forbidden]      Returned if the source credentials are incorrect"
+    response :unauthorized,  "[Unauthorized]   Indicates the user was found but the password is incorrect"
+    response :not_found,     "[Not Found]      The guest could not be found by supplied identifier"
   end
 
   def authenticate
-   
-    render json: {success: true}
+    status, valid = 404, false
+    
+    # find as email_address
+    email_address = Shg::EmailAddress.where(address: params[:identifier]).first
+    if email_address && email_address.individual && email_address.individual.account
+      status = 401
+      if (email_address.individual.account.password == params[:password])
+        status, valid = 200, true
+      end
+    else
+      # fetch as guest number
+      account = Shg::Account.where(guest_number: params[:identifier]).first
+      if account
+        status = 401
+        if account.password == params[:password]
+          status, valid = 200, true
+        end
+      end
+    end
+
+    render json: {success: valid}, status: status
   end
 
+=begin
   swagger_api :by do |api|
     summary "Fetches a guest number by via an alternate key"
     notes "Identifiers may be either; confirmation number, email address"
@@ -29,11 +49,18 @@ class Api::GuestsController < Api::SecureController
     response :not_acceptable
     response :not_found
   end
-
+=end
   def by
     puts params
 
     render json: {guest_number: params[:alternate_id] }
+  end
+
+
+  
+  def payment_cards
+
+
   end
 
 

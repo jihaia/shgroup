@@ -10,6 +10,10 @@
     {
       "path": "api/subscriptions.{format}",
       "description": "Subscription Management"
+    },
+    {
+      "path": "api/payment_cards.{format}",
+      "description": "Guest Payment Cards"
     }
   ],
   "info": {

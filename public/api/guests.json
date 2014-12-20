@@ -50,81 +50,23 @@
           ],
           "responseMessages": [
             {
+              "code": 401,
+              "responseModel": null,
+              "message": "[Unauthorized]   Indicates the user was found but the password is incorrect"
+            },
+            {
               "code": 403,
               "responseModel": null,
-              "message": "Forbidden"
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
             },
             {
               "code": 404,
               "responseModel": null,
-              "message": "Not Found"
-            },
-            {
-              "code": 406,
-              "responseModel": null,
-              "message": "Not Acceptable"
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
             }
           ],
           "method": "get",
           "nickname": "Api::Guests#authenticate"
-        }
-      ]
-    },
-    {
-      "path": "api/guests/by/{alternate_id}",
-      "operations": [
-        {
-          "summary": "Fetches a guest number by via an alternate key",
-          "notes": "Identifiers may be either; confirmation number, email address",
-          "parameters": [
-            {
-              "paramType": "header",
-              "name": "brand",
-              "type": "string",
-              "description": "The unique brand identifier",
-              "required": true
-            },
-            {
-              "paramType": "header",
-              "name": "application",
-              "type": "string",
-              "description": "Unique application identifier for source system",
-              "required": true
-            },
-            {
-              "paramType": "header",
-              "name": "token",
-              "type": "string",
-              "description": "Secure token for source system",
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "alternate_id",
-              "type": "string",
-              "description": "The identifier used to locate a guest. May be email address or a reservation confirmation number",
-              "required": true
-            }
-          ],
-          "responseMessages": [
-            {
-              "code": 401,
-              "responseModel": null,
-              "message": "Unauthorized"
-            },
-            {
-              "code": 404,
-              "responseModel": null,
-              "message": "Not Found"
-            },
-            {
-              "code": 406,
-              "responseModel": null,
-              "message": "Not Acceptable"
-            }
-          ],
-          "method": "get",
-          "nickname": "Api::Guests#by"
         }
       ]
     }
