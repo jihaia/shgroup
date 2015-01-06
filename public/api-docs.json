@@ -8,12 +8,72 @@
       "description": "Guest Management"
     },
     {
-      "path": "api/rest/subscriptions.{format}",
-      "description": "Subscription Management"
+      "path": "api/rest/addresses.{format}",
+      "description": "Addresses"
+    },
+    {
+      "path": "api/rest/appointments.{format}",
+      "description": "Appointments"
+    },
+    {
+      "path": "api/rest/campaigns.{format}",
+      "description": "Campaigns"
+    },
+    {
+      "path": "api/rest/comments.{format}",
+      "description": "Comments"
+    },
+    {
+      "path": "api/rest/communications.{format}",
+      "description": "Communications"
+    },
+    {
+      "path": "api/rest/email_addresses.{format}",
+      "description": "Email Addresses"
+    },
+    {
+      "path": "api/rest/experiences.{format}",
+      "description": "Experiences"
+    },
+    {
+      "path": "api/rest/incidents.{format}",
+      "description": "Incidents"
+    },
+    {
+      "path": "api/rest/interactions.{format}",
+      "description": "Interactions"
+    },
+    {
+      "path": "api/rest/itineraries.{format}",
+      "description": "Itineraries"
     },
     {
       "path": "api/rest/payment_cards.{format}",
       "description": "Payment Cards"
+    },
+    {
+      "path": "api/rest/payments.{format}",
+      "description": "Payment Transactions"
+    },
+    {
+      "path": "api/rest/preferences.{format}",
+      "description": "Preferences Management"
+    },
+    {
+      "path": "api/rest/reservation_preferences.{format}",
+      "description": "Reservation Preferences"
+    },
+    {
+      "path": "api/rest/reservations.{format}",
+      "description": "Reservations Management"
+    },
+    {
+      "path": "api/rest/subscriptions.{format}",
+      "description": "Subscription Management"
+    },
+    {
+      "path": "api/rest/telephones.{format}",
+      "description": "Telephones"
     }
   ],
   "info": {

@@ -5,9 +5,6 @@ Rails.application.routes.draw do
     namespace :rest do
 
 
-      # SUBSCRIPTION MANAGEMENT ================================
-      post 'subscriptions'                  => 'subscriptions#create'
-
       # GUEST ITEMS ============================================
       resources :guests do
 
@@ -16,8 +13,23 @@ Rails.application.routes.draw do
           get 'guests/by/:type/:alternate_id'   => 'guests#by',     :constraints => { :alternate_id => /.*/ }
         end
 
-
+        resources :addresses
+        resources :appointments
+        resources :campaigns
+        resources :comments
+        resources :communications
+        resources :email_addresses
+        resources :experiences
+        resources :incidents
+        resources :interactions
+        resources :itineraries
         resources :payment_cards
+        resources :payments
+        resources :preferences
+        resources :reservation_preferences
+        resources :reservations
+        resources :subscriptions
+        resources :telephones
 
       end
     end

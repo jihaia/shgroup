@@ -71,7 +71,7 @@
       ]
     },
     {
-      "path": "api/rest/guests/by/{type}/{alternate_id}",
+      "path": "api/rest/guests/guests/by/{type}/{alternate_id}",
       "operations": [
         {
           "summary": "Fetches a guest number by via an alternate key",
