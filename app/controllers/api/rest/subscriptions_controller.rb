@@ -1,4 +1,4 @@
-class Api::SubscriptionsController < ApplicationController
+class Api::Rest::SubscriptionsController < ApplicationController
 
   swagger_controller :subscriptions, "Subscription Management"
 

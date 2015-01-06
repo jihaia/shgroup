@@ -21,9 +21,6 @@ GEM
       activemodel (= 4.1.5)
       activesupport (= 4.1.5)
       arel (~> 5.0.0)
-    activerecord-sqlserver-adapter (4.1.0)
-      activerecord (~> 4.1.0)
-      arel
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -46,6 +43,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.5.0)
     multi_json (1.10.1)
+    mysql2 (0.3.16)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-cors (0.2.9)
@@ -69,7 +67,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    ruby-odbc (0.99995)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -102,20 +99,21 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2014.8)
       tzinfo (>= 1.0.0)
+    yard (0.8.7.4)
 
 PLATFORMS
   ruby
   x64-mingw32
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter
   bunny
   colored
+  mysql2
   rack-cors
   rails (= 4.1.5)
-  ruby-odbc
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
   swagger-docs
   tzinfo-data
+  yard

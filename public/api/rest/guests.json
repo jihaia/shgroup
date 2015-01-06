@@ -5,7 +5,7 @@
   "resourcePath": "guests",
   "apis": [
     {
-      "path": "api/guests/authenticate",
+      "path": "api/rest/guests/authenticate",
       "operations": [
         {
           "summary": "Authenticates the credentials of an individual guest",
@@ -66,12 +66,12 @@
             }
           ],
           "method": "get",
-          "nickname": "Api::Guests#authenticate"
+          "nickname": "Api::Rest::Guests#authenticate"
         }
       ]
     },
     {
-      "path": "api/guests/by/{type}/{alternate_id}",
+      "path": "api/rest/guests/by/{type}/{alternate_id}",
       "operations": [
         {
           "summary": "Fetches a guest number by via an alternate key",
@@ -145,7 +145,7 @@
             }
           ],
           "method": "get",
-          "nickname": "Api::Guests#by"
+          "nickname": "Api::Rest::Guests#by"
         }
       ]
     }

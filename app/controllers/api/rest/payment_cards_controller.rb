@@ -1,4 +1,4 @@
-class Api::PaymentCardsController < Api::SecureController
+class Api::Rest::PaymentCardsController < Api::Rest::SecureController
 
   before_filter :fetch_guest
 
@@ -8,7 +8,7 @@ class Api::PaymentCardsController < Api::SecureController
     summary "Fetches all payment cards for a guest"
     notes "Identifiers may be either; confirmation number, email address"
     type :result
-    Api::SecureController.secure_params(api)
+    Api::Rest::SecureController.secure_params(api)
     param :path,    :guest_id,  :string,   :required,   "The unique guest number that identifies a guest."
     response :not_found,     "[Not Found]      The guest could not be found by supplied identifier"
   end
@@ -23,8 +23,8 @@ class Api::PaymentCardsController < Api::SecureController
     summary "Fetches an individual payment card for a guest"
     notes "Identifiers may be either; confirmation number, email address"
     type :result
-    Api::SecureController.secure_params(api)
-    Api::SecureController.guest_params(api)
+    Api::Rest::SecureController.secure_params(api)
+    Api::Rest::SecureController.guest_params(api)
     param :path,    :id,        :stirng,   :required,   "The unique payment card identifier."
 
   end
@@ -37,7 +37,7 @@ class Api::PaymentCardsController < Api::SecureController
   swagger_api :create do |api|
     summary "Creates a new payment card for a guest"
     notes "Identifiers may be either; confirmation number, email address"
-    Api::SecureController.secure_params(api)
+    Api::Rest::SecureController.secure_params(api)
     param :path,    :alternate_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
     response :not_found,     "[Not Found]      The guest could not be found by supplied identifier"
   end
@@ -48,7 +48,7 @@ class Api::PaymentCardsController < Api::SecureController
   swagger_api :update do |api|
     summary "Updates an existing payment card for a guest"
     notes "Identifiers may be either; confirmation number, email address"
-    Api::SecureController.secure_params(api)
+    Api::Rest::SecureController.secure_params(api)
     param :path,    :alternate_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
     response :unauthorized
     response :not_acceptable
@@ -62,7 +62,7 @@ class Api::PaymentCardsController < Api::SecureController
   swagger_api :destroy do |api|
     summary "Deletes an existing payment card for a guest"
     notes "Identifiers may be either; confirmation number, email address"
-    Api::SecureController.secure_params(api)
+    Api::Rest::SecureController.secure_params(api)
     param :path,    :alternate_id,  :string,   :required,   "The identifier used to locate a guest. May be email address or a reservation confirmation number"
     response :unauthorized
     response :not_acceptable
@@ -75,7 +75,7 @@ class Api::PaymentCardsController < Api::SecureController
 
   # Swagger Models =================================================================================
   swagger_model :result do |api|
-    Api::SecureController.read_result(api, "PaymentCard")
+    Api::Rest::SecureController.read_result(api, "PaymentCard")
   end
 
   swagger_model :PaymentCard do

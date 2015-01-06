@@ -1,10 +1,10 @@
-class Api::SecureController < ApplicationController
+class Api::Rest::SecureController < ApplicationController
 
   before_filter :authenticate_endpoint
 
   def authenticate_endpoint
     @brand = request.headers["X-Brand"]
-    application = Crm::Application.where(application_id: request.headers["X-Endpoint"], token: request.headers["X-Token"]).first
+    application = Application.where(application_id: request.headers["X-Endpoint"], token: request.headers["X-Token"]).first
     valid = application ? true : false
     head :forbidden unless valid
   end # def authenticate_user
@@ -29,7 +29,7 @@ class Api::SecureController < ApplicationController
 
   # Fetches an individual guest using the guest number supplied in the request.
   def fetch_guest
-    @guest = Crm::Account.where(guest_number: params[:guest_id]).first
+    @guest = Account.where(guest_number: params[:guest_id]).first
     head :not_found unless @guest
   end
 

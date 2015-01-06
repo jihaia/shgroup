@@ -1,4 +1,4 @@
-class Crm::Individual < ActiveRecord::Base
+class Individual < ActiveRecord::Base
 
   self.table_name  = :individual
   self.primary_key = :individual_id

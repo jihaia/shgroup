@@ -4,15 +4,15 @@
   "basePath": "/",
   "apis": [
     {
-      "path": "api/guests.{format}",
+      "path": "api/rest/guests.{format}",
       "description": "Guest Management"
     },
     {
-      "path": "api/subscriptions.{format}",
+      "path": "api/rest/subscriptions.{format}",
       "description": "Subscription Management"
     },
     {
-      "path": "api/payment_cards.{format}",
+      "path": "api/rest/payment_cards.{format}",
       "description": "Payment Cards"
     }
   ],

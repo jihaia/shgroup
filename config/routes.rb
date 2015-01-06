@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    # GUEST MANAGEMENT =======================================
-    get 'guests/authenticate'          => 'guests#authenticate',       :constraints => { :alternate_id => /.*/ }
-    get 'guests/by/:alternate_id'      => 'guests#by',                 :constraints => { :alternate_id => /.*/ }
 
-    # SUBSCRIPTION MANAGEMENT ================================
-    post 'subscriptions'               => 'subscriptions#create'
+    namespace :rest do
 
-    # GUEST ITEMS ============================================
-    resources :guests do
-      resources :payment_cards
+
+      # SUBSCRIPTION MANAGEMENT ================================
+      post 'subscriptions'                  => 'subscriptions#create'
+
+      # GUEST ITEMS ============================================
+      resources :guests do
+
+        collection do
+          get 'authenticate'
+          get 'guests/by/:type/:alternate_id'   => 'guests#by',     :constraints => { :alternate_id => /.*/ }
+        end
+
+
+        resources :payment_cards
+
+      end
     end
 
   end
