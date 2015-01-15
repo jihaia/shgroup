@@ -4,6 +4,524 @@
   "basePath": "/",
   "resourcePath": "incidents",
   "apis": [
-
-  ]
+    {
+      "path": "api/rest/guests/{guest_id}/incidents",
+      "operations": [
+        {
+          "summary": "Fetches all incidents for a guest",
+          "notes": "Incidents",
+          "type": "Incidents",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique system guest identifier",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "The page to retrieve",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "The number of rows per page",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "type": "string",
+              "description": "The name of the property to order the read by",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "direction",
+              "type": "string",
+              "description": "The direction of the order",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "ASC",
+                  "DESC"
+                ]
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "skipPaging",
+              "type": "boolean",
+              "description": "Indicates if paging should not be applied to the request",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::Rest::Incidents#index"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/incidents",
+      "operations": [
+        {
+          "summary": "Creates a new incident for a guest",
+          "notes": "",
+          "type": "Incidents",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique system guest identifier",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "NewIncident",
+              "description": "Incident Object",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            },
+            {
+              "code": 500,
+              "responseModel": "ErrorResult",
+              "message": "Error occured creating the record"
+            }
+          ],
+          "method": "post",
+          "nickname": "Api::Rest::Incidents#create"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/incidents/{id}",
+      "operations": [
+        {
+          "summary": "Fetches an individual incident for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "type": "Incidents",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique system guest identifier",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "The reference code of the incident",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::Rest::Incidents#show"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/incidents/{id}",
+      "operations": [
+        {
+          "summary": "Updates an existing payment card for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "type": "Incidents",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique system guest identifier",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "The reference code of the incident",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "Incident",
+              "description": "Incident Object",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": "ErrorResult",
+              "message": "Error occured creating the record"
+            }
+          ],
+          "method": "patch",
+          "nickname": "Api::Rest::Incidents#update"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/incidents/{id}",
+      "operations": [
+        {
+          "summary": "Deletes an existing payment card for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique system guest identifier",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "The reference code of the incident",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "delete",
+          "nickname": "Api::Rest::Incidents#destroy"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Incidents": {
+      "id": "Incidents",
+      "required": [
+        "success",
+        "records",
+        "total"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Indicates if the request was successful"
+        },
+        "records": {
+          "type": "array",
+          "description": "An array of records",
+          "items": {
+            "$ref": "Incident"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "description": "The total number of records"
+        }
+      }
+    },
+    "NewIncident": {
+      "id": "NewIncident",
+      "required": [
+        "incidentType",
+        "description",
+        "status",
+        "reportedOn"
+      ],
+      "properties": {
+        "propertyNumber": {
+          "type": "string",
+          "description": "Unique property number defined for each physical porperty"
+        },
+        "incidentType": {
+          "type": "string",
+          "description": "Represents the type of incident reported"
+        },
+        "problemArea": {
+          "type": "string",
+          "description": "A further classification to the incident type"
+        },
+        "description": {
+          "type": "text",
+          "description": "A detailed discription of the incident"
+        },
+        "status": {
+          "type": "string",
+          "description": "Represents the current status of the incident"
+        },
+        "startedOn": {
+          "type": "date",
+          "description": "The date the incident began (as reported by the guest)"
+        },
+        "reportedOn": {
+          "type": "date",
+          "description": "The date the incident was reported in the system"
+        },
+        "resolvedOn": {
+          "type": "date",
+          "description": "The date the incident status was set to closed"
+        },
+        "assignedTo": {
+          "type": "string",
+          "description": "The username or group the incident is assigned to"
+        }
+      },
+      "description": "An Incident Object."
+    },
+    "Incident": {
+      "id": "Incident",
+      "required": [
+        "referenceCode",
+        "guestId",
+        "incidentType",
+        "description",
+        "status",
+        "reportedOn"
+      ],
+      "properties": {
+        "referenceCode": {
+          "type": "string",
+          "description": "Unique reference code created for each incident"
+        },
+        "guestId": {
+          "type": "string",
+          "description": "Unique identifier for a guest"
+        },
+        "propertyNumber": {
+          "type": "string",
+          "description": "Unique property number defined for each physical porperty"
+        },
+        "incidentType": {
+          "type": "string",
+          "description": "Represents the type of incident reported"
+        },
+        "problemArea": {
+          "type": "string",
+          "description": "A further classification to the incident type"
+        },
+        "description": {
+          "type": "text",
+          "description": "A detailed discription of the incident"
+        },
+        "status": {
+          "type": "string",
+          "description": "Represents the current status of the incident"
+        },
+        "startedOn": {
+          "type": "date",
+          "description": "The date the incident began (as reported by the guest)"
+        },
+        "reportedOn": {
+          "type": "date",
+          "description": "The date the incident was reported in the system"
+        },
+        "resolvedOn": {
+          "type": "date",
+          "description": "The date the incident status was set to closed"
+        },
+        "assignedTo": {
+          "type": "string",
+          "description": "The username or group the incident is assigned to"
+        }
+      },
+      "description": "An Incident Object."
+    }
+  }
 }

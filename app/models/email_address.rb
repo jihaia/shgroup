@@ -1,8 +1,9 @@
 class EmailAddress < ActiveRecord::Base
 
-  self.table_name    = "email_address"
-  self.primary_key   = "email_address_id"
+  self.table_name    = "email_addresses"
+  self.primary_key   = "addressId"
 
-  belongs_to   :individual
-  #belongs_to   :account,         :through => :individual
-end
+  # ASSOCIATIONS ============================================
+  belongs_to   :person,           foriegn_key: :emailAddress
+
+end # class EmailAddress

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
         collection do
           get 'authenticate'
-          get 'guests/by/:type/:alternate_id'   => 'guests#by',     :constraints => { :alternate_id => /.*/ }
+          get 'by/:type/:alternate_id'   => 'guests#by',     :constraints => { :alternate_id => /.*/ }
         end
 
         resources :addresses

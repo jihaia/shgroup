@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.2'
 
 #gem 'activerecord-sqlserver-adapter'
 #gem 'ruby-odbc'
@@ -22,3 +22,5 @@ gem 'colored'
 gem 'bunny'
 gem "rack-cors"
 gem "yard"
+gem "uuidtools"
+gem 'active_model_serializers'

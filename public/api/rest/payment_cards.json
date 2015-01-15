@@ -21,14 +21,14 @@
             },
             {
               "paramType": "header",
-              "name": "X-Endpoint",
+              "name": "X-Endpoint-Id",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "X-Token",
+              "name": "X-Endpoint-Token",
               "type": "string",
               "description": "Secure token for source system",
               "required": true
@@ -74,14 +74,14 @@
             },
             {
               "paramType": "header",
-              "name": "X-Endpoint",
+              "name": "X-Endpoint-Id",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "X-Token",
+              "name": "X-Endpoint-Token",
               "type": "string",
               "description": "Secure token for source system",
               "required": true
@@ -121,14 +121,14 @@
             },
             {
               "paramType": "header",
-              "name": "X-Endpoint",
+              "name": "X-Endpoint-Id",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "X-Token",
+              "name": "X-Endpoint-Token",
               "type": "string",
               "description": "Secure token for source system",
               "required": true
@@ -137,7 +137,7 @@
               "paramType": "path",
               "name": "guest_id",
               "type": "string",
-              "description": "The identifier used to locate a guest. May be email address or a reservation confirmation number",
+              "description": "The unique system guest identifier",
               "required": true
             },
             {
@@ -181,14 +181,14 @@
             },
             {
               "paramType": "header",
-              "name": "X-Endpoint",
+              "name": "X-Endpoint-Id",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "X-Token",
+              "name": "X-Endpoint-Token",
               "type": "string",
               "description": "Secure token for source system",
               "required": true
@@ -237,14 +237,14 @@
             },
             {
               "paramType": "header",
-              "name": "X-Endpoint",
+              "name": "X-Endpoint-Id",
               "type": "string",
               "description": "Unique endpoint or application identifier of a registered system",
               "required": true
             },
             {
               "paramType": "header",
-              "name": "X-Token",
+              "name": "X-Endpoint-Token",
               "type": "string",
               "description": "Secure token for source system",
               "required": true
@@ -282,20 +282,25 @@
     "result": {
       "id": "result",
       "required": [
+        "success",
         "records",
         "total"
       ],
       "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Indicates if the request was successful"
+        },
         "records": {
           "type": "array",
-          "description": "An array of payment cards",
+          "description": "An array of records",
           "items": {
             "$ref": "PaymentCard"
           }
         },
         "total": {
           "type": "integer",
-          "description": "The total number of payment cards"
+          "description": "The total number of records"
         }
       }
     },

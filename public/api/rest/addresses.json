@@ -4,6 +4,365 @@
   "basePath": "/",
   "resourcePath": "addresses",
   "apis": [
-
-  ]
+    {
+      "path": "api/rest/guests/{guest_id}/addresses",
+      "operations": [
+        {
+          "summary": "Fetches all addresses for a guest",
+          "notes": "Addresses represent a physical location that the guest has an affinity too. Guests may have zero or more addresses with no upper limit.",
+          "type": "result",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique guest number that identifies a guest.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::Rest::Addresses#index"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/addresses",
+      "operations": [
+        {
+          "summary": "Creates a new payment card for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            }
+          ],
+          "method": "post",
+          "nickname": "Api::Rest::Addresses#create"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/addresses/{id}",
+      "operations": [
+        {
+          "summary": "Fetches an individual payment card for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "type": "result",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "guest_id",
+              "type": "string",
+              "description": "The unique system guest identifier",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "stirng",
+              "description": "The unique payment card identifier.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "[Not Found]      The guest could not be found by supplied identifier"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::Rest::Addresses#show"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/addresses/{id}",
+      "operations": [
+        {
+          "summary": "Updates an existing payment card for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "patch",
+          "nickname": "Api::Rest::Addresses#update"
+        }
+      ]
+    },
+    {
+      "path": "api/rest/guests/{guest_id}/addresses/{id}",
+      "operations": [
+        {
+          "summary": "Deletes an existing payment card for a guest",
+          "notes": "Identifiers may be either; confirmation number, email address",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "X-Brand",
+              "type": "string",
+              "description": "The unique brand identifier",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Id",
+              "type": "string",
+              "description": "Unique endpoint or application identifier of a registered system",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "X-Endpoint-Token",
+              "type": "string",
+              "description": "Secure token for source system",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "[Forbidden]      Returned if the source credentials are incorrect"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "delete",
+          "nickname": "Api::Rest::Addresses#destroy"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "result": {
+      "id": "result",
+      "required": [
+        "success",
+        "records",
+        "total"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Indicates if the request was successful"
+        },
+        "records": {
+          "type": "array",
+          "description": "An array of records",
+          "items": {
+            "$ref": "Address"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "description": "The total number of records"
+        }
+      }
+    },
+    "Address": {
+      "id": "Address",
+      "required": [
+        "addressId",
+        "guestId",
+        "isPrimary",
+        "revisionNumber"
+      ],
+      "properties": {
+        "addressId": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "guestId": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "addressType": {
+          "type": "string",
+          "description": "Guests password in plain text"
+        },
+        "line1": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "line2": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "line3": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "line4": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "city": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "stateProvince": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        },
+        "revisionNumber": {
+          "type": "integer",
+          "description": "A unique identifier thay may be either an email address or guest number"
+        }
+      },
+      "description": "An Address domain object."
+    }
+  }
 }
