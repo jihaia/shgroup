@@ -80,7 +80,7 @@ class Api::Rest::IncidentsController < Api::Rest::SecureController
   end
 
   swagger_api :destroy do |api|
-    summary "Deletes an existing payment card for a guest"
+    summary "Deletes an existing incident for a guest"
     notes "Deleting an incident is a destructive operation."
     Api::Rest::SecureController.secure_params(api)
     Api::Rest::SecureController.guest_params(api)
